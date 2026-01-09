@@ -1,30 +1,47 @@
 import streamlit as st
-
 import random
 
-st.title(" 数字当てゲーム（High & Low）")
+st.title("🎯 2分の1を当て続けるゲーム")
 
-# ランダムな正解の数値をセッションに保存
-if "answer" not in st.session_state:
-    st.session_state.answer = random.randint(1, 100)
-    st.session_state.count = 0
+# セッション状態の初期化
+if "win_streak" not in st.session_state:
+    st.session_state.win_streak = 0
+if "game_over" not in st.session_state:
+    st.session_state.game_over = False
 
-st.write("1〜100 の中から当たりの数字をあてろ！")
+st.write("0 か 1 のどちらかを選んでください")
 
-# ユーザー入力
-guess = st.number_input("数字を入力", min_value=1, max_value=100, step=1)
-clicked = st.button("判定！")
+# ゲーム中
+if not st.session_state.game_over:
+    col1, col2 = st.columns(2)
 
-if clicked:
-    st.session_state.count += 1
-
-    if guess < st.session_state.answer:
-        st.warning("もっと大きい数字だよ！⬆")
-    elif guess > st.session_state.answer:
-        st.warning("もっと小さい数字だよ！⬇")
+    if col1.button("0"):
+        choice = 0
+    elif col2.button("1"):
+        choice = 1
     else:
-        st.success(f"🎉 正解！ {st.session_state.count} 回目で当てた！")
-        if st.button("もう一回遊ぶ"):
-            st.session_state.answer = random.randint(1, 100)
-            st.session_state.count = 0
-            st.experimental_rerun()
+        choice = None
+
+    if choice is not None:
+        answer = random.randint(0, 1)
+
+        if choice == answer:
+            st.session_state.win_streak += 1
+            st.success(f"正解！🎉（答え：{answer}）")
+        else:
+            st.error(f"不正解…💀（答え：{answer}）")
+            st.session_state.game_over = True
+
+# 結果表示
+win = st.session_state.win_streak
+st.write(f"🔥 連勝数：{win}")
+
+# 確率計算（ここまで全て当てている確率）
+probability = (1 / 2) ** win
+st.write(f"📊 ここまで当て続けている確率：**{probability:.6f}**")
+
+# リスタート
+if st.session_state.game_over:
+    if st.button("もう一度遊ぶ"):
+        st.session_state.win_streak = 0
+        st.session_state.game_over = False
