@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 
-st.title(" ！")
+st.title(" 右左どっちゲーム！")
 
 # ボタンを大きくする
 st.markdown("""
@@ -83,6 +83,7 @@ if st.session_state.game_over:
         st.session_state.win_streak = 0
         st.session_state.game_over = False
         st.session_state.choice = None
+
 
 
 
