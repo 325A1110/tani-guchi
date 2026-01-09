@@ -51,7 +51,34 @@ st.write(f"現在の連勝数：{win}")
 
 probability = (1 / 2) ** win
 prob_percent = probability * 100
-st.write(f"### ここまで当て続けている確率：**{prob_percent:.4f}%**")
+# 結果表示
+win = st.session_state.win_streak
+st.write(f"🔥 連勝数：{win}")
+
+# ↓↓↓ ここから貼り替える ↓↓↓
+
+# 連勝数に応じて色を決める
+if win < 3:
+    color = "black"
+elif win < 5:
+    color = "green"
+elif win < 8:
+    color = "blue"
+elif win < 12:
+    color = "orange"
+else:
+    color = "red"
+
+# 確率（％）
+prob_percent = ((1 / 2) ** win) * 100
+
+# ％表示だけ色付き
+st.markdown(
+    f"<p style='color:{color}; font-size:24px;'>"
+    f"📊 ここまで当て続けている確率：{prob_percent:.4f}%"
+    f"</p>",
+    unsafe_allow_html=True
+)
 
 # リスタート
 if st.session_state.game_over:
@@ -59,6 +86,7 @@ if st.session_state.game_over:
         st.session_state.win_streak = 0
         st.session_state.game_over = False
         st.session_state.choice = None
+
 
 
 
