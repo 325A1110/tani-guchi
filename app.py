@@ -59,12 +59,12 @@ st.write(f"🔥 連勝数：{win}")
 
 # 連勝数に応じて色を決める
 if win < 2:
-    color = "gold"
+    color = "white"
 elif win < 4:
-    color = "green"
+    color = "blue"
 elif win < 6:
-    color = "orange"
-elif win < 9:
+    color = "green"
+elif win < 8:
     color = "red"
 else:
     color = "gold"
@@ -83,6 +83,7 @@ if st.session_state.game_over:
         st.session_state.win_streak = 0
         st.session_state.game_over = False
         st.session_state.choice = None
+
 
 
 
