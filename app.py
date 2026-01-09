@@ -59,15 +59,15 @@ st.write(f"🔥 連勝数：{win}")
 
 # 連勝数に応じて色を決める
 if win < 3:
-    color = "black"
+    color = "blue"
 elif win < 5:
     color = "green"
 elif win < 8:
-    color = "blue"
-elif win < 12:
     color = "orange"
-else:
+elif win < 12:
     color = "red"
+else:
+    color = "gold"
 
 # 確率（％）
 prob_percent = ((1 / 2) ** win) * 100
@@ -86,6 +86,7 @@ if st.session_state.game_over:
         st.session_state.win_streak = 0
         st.session_state.game_over = False
         st.session_state.choice = None
+
 
 
 
