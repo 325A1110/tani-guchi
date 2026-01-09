@@ -1,7 +1,18 @@
 import streamlit as st
 import random
 
-st.title("🎯 2分の1を当て続けるゲーム")
+st.title(" 2分の1を当て続けろ！")
+
+# ボタンを大きくする
+st.markdown("""
+<style>
+div.stButton > button {
+    width: 100%;
+    height: 120px;
+    font-size: 40px;
+}
+</style>
+""", unsafe_allow_html=True)
 
 # 初期化
 if "win_streak" not in st.session_state:
@@ -11,14 +22,14 @@ if "game_over" not in st.session_state:
 if "choice" not in st.session_state:
     st.session_state.choice = None
 
-st.write("0 か 1 のどちらかを選んでください")
+st.write("右 か 左 のどちらかを選んでください")
 
 if not st.session_state.game_over:
     col1, col2 = st.columns(2)
 
-    if col1.button("0"):
+    if col1.button("右"):
         st.session_state.choice = 0
-    if col2.button("1"):
+    if col2.button("左"):
         st.session_state.choice = 1
 
     if st.session_state.choice is not None:
@@ -47,4 +58,5 @@ if st.session_state.game_over:
         st.session_state.win_streak = 0
         st.session_state.game_over = False
         st.session_state.choice = None
+
 
