@@ -9,7 +9,7 @@ st.markdown("""
 div.stButton > button {
     width: 600%;
     height: 150px;
-    font-size: 40px;
+    font-size: 70px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -59,6 +59,7 @@ if st.session_state.game_over:
         st.session_state.win_streak = 0
         st.session_state.game_over = False
         st.session_state.choice = None
+
 
 
 
