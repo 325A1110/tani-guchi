@@ -27,9 +27,9 @@ st.write("右 か 左 のどちらかを選んでください")
 if not st.session_state.game_over:
     col1, col2 = st.columns(2)
 
-    if col1.button("右"):
+    if col1.button("左"):
         st.session_state.choice = 0
-    if col2.button("左"):
+    if col2.button("右"):
         st.session_state.choice = 1
 
     if st.session_state.choice is not None:
@@ -59,6 +59,7 @@ if st.session_state.game_over:
         st.session_state.win_streak = 0
         st.session_state.game_over = False
         st.session_state.choice = None
+
 
 
 
