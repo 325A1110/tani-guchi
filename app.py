@@ -7,7 +7,7 @@ st.title(" 2分の1を当て続けろ！")
 st.markdown("""
 <style>
 div.stButton > button {
-    width: 100%;
+    width: 200%;
     height: 120px;
     font-size: 40px;
 }
@@ -58,5 +58,6 @@ if st.session_state.game_over:
         st.session_state.win_streak = 0
         st.session_state.game_over = False
         st.session_state.choice = None
+
 
 
