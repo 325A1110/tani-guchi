@@ -51,7 +51,7 @@ st.write(f"現在の連勝数：{win}")
 
 probability = (1 / 2) ** win
 prob_percent = probability * 100
-st.write(f" ここまで当て続けている確率：**{prob_percent:.4f}%**")
+st.write(f"### ここまで当て続けている確率：**{prob_percent:.4f}%**")
 
 # リスタート
 if st.session_state.game_over:
@@ -59,6 +59,7 @@ if st.session_state.game_over:
         st.session_state.win_streak = 0
         st.session_state.game_over = False
         st.session_state.choice = None
+
 
 
 
