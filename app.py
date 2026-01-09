@@ -37,9 +37,9 @@ if not st.session_state.game_over:
 
         if st.session_state.choice == answer:
             st.session_state.win_streak += 1
-            st.success(f"正解！🎉（答え：{answer}）")
+            st.success("正解！🎉")
         else:
-            st.error(f"不正解…💀（答え：{answer}）")
+            st.error("不正解…💀")
             st.session_state.game_over = True
 
         # 次の入力に備えてリセット
@@ -59,6 +59,7 @@ if st.session_state.game_over:
         st.session_state.win_streak = 0
         st.session_state.game_over = False
         st.session_state.choice = None
+
 
 
 
