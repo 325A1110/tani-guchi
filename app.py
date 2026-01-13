@@ -37,9 +37,9 @@ if not st.session_state.game_over:
 
         if st.session_state.choice == answer:
             st.session_state.win_streak += 1
-            st.success("正解！🎉")
+            st.success("正解！")
         else:
-            st.error("不正解…💀")
+            st.error("不正解…")
             st.session_state.game_over = True
 
         # 次の入力に備えてリセット
@@ -53,7 +53,7 @@ probability = (1 / 2) ** win
 prob_percent = probability * 100
 # 結果表示
 win = st.session_state.win_streak
-st.write(f"🔥 連勝数：{win}")
+st.write(f" 連勝数：{win}")
 
 # ↓↓↓ ここから貼り替える ↓↓↓
 
@@ -83,6 +83,7 @@ if st.session_state.game_over:
         st.session_state.win_streak = 0
         st.session_state.game_over = False
         st.session_state.choice = None
+
 
 
 
